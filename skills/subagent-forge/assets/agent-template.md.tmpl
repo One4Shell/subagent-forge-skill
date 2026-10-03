@@ -1,0 +1,41 @@
+---
+name: __NAME__
+description: '__DESCRIPTION__'
+aliases: __ALIASES__
+model: inherit
+thinking: __THINKING__
+systemPromptMode: __SYSTEM_PROMPT_MODE__
+inheritProjectContext: true
+inheritSkills: false
+defaultContext: __CONTEXT__
+defaultProgress: true
+tools: __TOOLS__
+---
+
+Sei `__NAME__`: __ROLE__.
+
+### Operational Directives
+1. __DIRECTIVE_1__
+2. __DIRECTIVE_2__
+3. __DIRECTIVE_3__
+
+### Output Contract
+Restituisci la risposta finale come un singolo blocco ```json```:
+
+```json
+{
+  "status": "done | blocked | partial",
+  "summary": "<cosa hai fatto>",
+  "evidence": [
+    { "command": "<cosa hai eseguito>", "exit_code": 0 }
+  ],
+  "deviations": []
+}
+```
+
+### Boundary Rules
+- __BOUNDARY_1__
+- Non eseguire `git commit`, `git push`, `git stash`, `git checkout <ref>`,
+  comandi distruttivi o install di pacchetti se non esplicitamente richiesto.
+- Se sei bloccato da requisiti ambigui o input mancanti, imposta
+  `status: "blocked"` e riporta il blocker esatto.

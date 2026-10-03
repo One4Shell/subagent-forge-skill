@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""__DESCRIPTION__
+
+Helper script for a pi-subagents agent. Deterministic, safe, idempotent.
+Exits 0 on success, non-zero on failure. Emits JSON on stdout.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+AGENT_DIR = SCRIPT_DIR.parent  # noqa: F841 - available for support files
+
+USAGE = "usage: __SCRIPT_NAME__ <arg>"
+
+
+def main(argv: list[str]) -> int:
+    if len(argv) != 2:
+        print(USAGE, file=sys.stderr)
+        return 2
+
+    target = Path(argv[1])
+
+    # Read-only by default: validate inputs, do not write outside scope.
+    if not target.exists():
+        print(json.dumps({"ok": False, "error": "not found", "target": str(target)}))
+        return 1
+
+    # TODO: implement the deterministic step.
+    print(json.dumps({"ok": True, "target": str(target)}))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv))

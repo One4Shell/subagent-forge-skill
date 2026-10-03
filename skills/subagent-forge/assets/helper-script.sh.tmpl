@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# __DESCRIPTION__
+#
+# Helper script for a pi-subagents agent. Deterministic, safe, idempotent.
+# Exits 0 on success, non-zero on failure. Emits JSON on stdout.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+AGENT_DIR="$(dirname -- "$SCRIPT_DIR")"
+
+usage() {
+  cat <<'EOF'
+Usage: __SCRIPT_NAME__ <arg>
+
+Describe inputs, outputs and exit codes here.
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ $# -lt 1 ]]; then
+  usage >&2
+  exit 2
+fi
+
+target="$1"
+
+# Read-only by default: validate inputs, do not write outside scope.
+# Example check:
+if [[ ! -e "$target" ]]; then
+  printf '{"ok": false, "error": "not found", "target": "%s"}\n' "$target"
+  exit 1
+fi
+
+# TODO: implement the deterministic step.
+printf '{"ok": true, "target": "%s"}\n' "$target"
+exit 0
