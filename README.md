@@ -57,7 +57,7 @@ Quando la attivi (o quando Pi la seleziona automaticamente), `subagent-forge`:
 ### Opzione 1 — Da repo git (npx skills)
 
 ```bash
-npx skills add <owner>/subagent-forge-skill --skill subagent-forge
+npx skills add One4Shell/subagent-forge-skill --skill subagent-forge
 ```
 
 ### Opzione 2 — Con `install.sh` (nessun npm)
