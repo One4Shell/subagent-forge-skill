@@ -3,8 +3,8 @@
 #
 # Usage:
 #   ./install.sh [--dir <path>] [--path <path>] [--global] [--claude] [--force]
-#   curl -fsSL https://raw.githubusercontent.com/<owner>/subagent-forge-skill/main/install.sh | bash
-#   curl -fsSL https://raw.githubusercontent.com/<owner>/subagent-forge-skill/main/install.sh | bash -s -- --global
+#   curl -fsSL https://raw.githubusercontent.com/One4Shell/subagent-forge-skill/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/One4Shell/subagent-forge-skill/main/install.sh | bash -s -- --global
 set -euo pipefail
 
 SUBAGENT_FORGE_REPO="${SUBAGENT_FORGE_REPO:-<your-org>/subagent-forge-skill}"
